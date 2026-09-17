@@ -87,12 +87,20 @@ tabs.forEach(tab => {
   });
 });
 
-// Contact form (static — no backend yet, shows confirmation only)
+// Send the enquiry through the visitor's default email application.
 const form = document.getElementById('contactForm');
 const formNote = document.getElementById('formNote');
 
 form?.addEventListener('submit', (e) => {
   e.preventDefault();
-  formNote.textContent = "Thanks — we've noted your enquiry. For a faster reply, use WhatsApp or email directly.";
-  form.reset();
+  const formData = new FormData(form);
+  const name = String(formData.get('name') || '').trim();
+  const email = String(formData.get('email') || '').trim();
+  const message = String(formData.get('message') || '').trim();
+  const subject = `Import enquiry from ${name}`;
+  const body = [`Name: ${name}`, `Email: ${email}`, '', message].join('\n');
+  const mailto = `mailto:abkadar3010@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  formNote.textContent = 'Opening your email app with the enquiry details.';
+  window.location.href = mailto;
 });
