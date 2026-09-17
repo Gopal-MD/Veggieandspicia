@@ -110,13 +110,19 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   margin-right: auto;
 }
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.brand-mark svg { display: block; }
 .brand-text {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   color: var(--green-dark);
   line-height: 1.15;
   display: flex;
@@ -125,7 +131,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .brand-sub {
   font-family: var(--font-body);
   font-weight: 500;
-  font-size: 0.68rem;
+  font-size: 0.63rem;
   color: var(--saffron);
   letter-spacing: 0.02em;
 }
